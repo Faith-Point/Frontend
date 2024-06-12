@@ -1,0 +1,26 @@
+body {
+  background-color: #f8f9fa; /* Cor de fundo suave */
+  color: #333; /* Cor do texto */
+}
+
+h1 {
+  color: #333; /* Cor do título */
+}
+
+.container {
+  padding-top: 20px;
+}
+
+.dashboard {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: auto;
+}
+
+.table-responsive {
+  max-height: 500px;
+  overflow-y: auto;
+}

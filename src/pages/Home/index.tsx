@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './styles.css'; // Importa o arquivo de estilo
+import { Table, Button, Alert, Spinner } from 'react-bootstrap';
+import Layout from '../../components/Layout';
+import './styles.css';
 
 const HomePage: React.FC = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
   const [data, setData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (!token) {
@@ -23,55 +27,83 @@ const HomePage: React.FC = () => {
           }
         });
         setData(response.data.data);
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        setError('Erro ao buscar os dados');
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [token, navigate]);
 
+  const handleEdit = (id: string) => {
+    navigate(`/edit/${id}`);
+  };
+
+  const handleDelete = async (id: string) => {
+    try {
+      await axios.delete(`http://localhost:3308/faithPoint/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setData(data.filter(item => item.id !== id));
+    } catch (error) {
+      setError('Erro ao deletar o ponto de fé');
+    }
+  };
+
   return (
-    <div className="home-container">
-      <h1>Home Page</h1>
-      {data.length > 0 ? (
-        <div className="dashboard">
-          <h2>Dashboard</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Endereço</th>
-                <th>Religião</th>
-                <th>Contato</th>
-                <th>Rede Social</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.name}</td>
-                  <td>{item.description}</td>
-                  <td>{`${item.address.street}, ${item.address.number}, ${item.address.complement}, ${item.address.city.short_name}-${item.address.city.state.short_name}`}</td>
-                  <td>{item.religion.name}</td>
-                  <td>{`${item.contact.name}, ${item.contact.phone}, ${item.contact.email}`}</td>
-                  <td>
-                    <a href={item.socialMedia.link} target="_blank" rel="noopener noreferrer">
-                      {item.socialMedia.name}
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <Layout>
+      <h1 className="text-center mb-4">Dashboard</h1>
+      {error && <Alert variant="danger">{error}</Alert>}
+      {loading ? (
+        <div className="d-flex justify-content-center">
+          <Spinner animation="border" />
         </div>
       ) : (
-        <p>Loading...</p>
+        <div className="dashboard">
+          <div className="table-responsive">
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Endereço</th>
+                  <th>Religião</th>
+                  <th>Contato</th>
+                  <th>Rede Social</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item) => (
+                  <tr key={item.id}>
+                    <td>{item.name}</td>
+                    <td>{item.description}</td>
+                    <td>{`${item.address.street}, ${item.address.number}, ${item.address.complement}, ${item.address.city.short_name}-${item.address.city.state.short_name}`}</td>
+                    <td>{item.religion.name}</td>
+                    <td>{`${item.contact.name}, ${item.contact.phone}, ${item.contact.email}`}</td>
+                    <td>
+                      <a href={item.socialMedia.link} target="_blank" rel="noopener noreferrer">
+                        {item.socialMedia.name}
+                      </a>
+                    </td>
+                    <td>
+                      <div className="d-flex justify-content-between">
+                        <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(item.id)}>Editar</Button>
+                        <Button variant="danger" size="sm" onClick={() => handleDelete(item.id)}>Excluir</Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        </div>
       )}
-    </div>
+    </Layout>
   );
 };
 
