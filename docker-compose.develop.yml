@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  development:
+    env_file:
+      - .env.development
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: faithpoint-frontend-development
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - faithpoint-network
+    restart: on-failure
+
+networks:
+  faithpoint-network:
+    driver: bridge
