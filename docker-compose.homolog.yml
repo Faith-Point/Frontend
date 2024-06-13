@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  homolog:
+    env_file:
+      - .env.homolog
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: faithpoint-frontend-homolog
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - faithpoint-network
+    restart: on-failure
+
+networks:
+  faithpoint-network:
+    driver: bridge

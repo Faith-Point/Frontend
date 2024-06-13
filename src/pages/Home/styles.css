@@ -1,0 +1,67 @@
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.dashboard {
+  background: #1e1c1c;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.table {
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid #312e2e;
+  text-align: left;
+  color: #333;
+}
+
+.table th {
+  background-color: #292727;
+}
+
+.table td a {
+  color: #242628;
+  text-decoration: none;
+}
+
+.table td a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 10px;
+  }
+
+  .table th,
+  .table td {
+    padding: 5px;
+  }
+}
+
+/* Adicione estas novas regras */
+body {
+  background-color: #f8f9fa; /* Cor de fundo suave */
+  color: #333; /* Cor do texto */
+}
+
+h1 {
+  color: #333;
+}
+
+.content-wrapper {
+  padding-top: 70px;
+}
