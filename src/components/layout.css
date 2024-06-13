@@ -1,26 +1,74 @@
-body {
-  background-color: #f8f9fa; /* Cor de fundo suave */
-  color: #333; /* Cor do texto */
+.layout {
+  display: flex;
 }
 
-h1 {
-  color: #333; /* Cor do título */
+.sidebar {
+  width: 250px;
 }
 
-.container {
-  padding-top: 20px;
+.content {
+  margin-left: 250px; /* Largura da sidebar */
+  padding: 20px;
+  width: calc(100% - 250px); /* Largura da sidebar */
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
 }
 
 .dashboard {
-  background-color: white;
-  border-radius: 8px;
+  background: #1e1c1c;
   padding: 20px;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
-  margin: auto;
+  width: 100%;
 }
 
 .table-responsive {
-  max-height: 500px;
-  overflow-y: auto;
+  max-height: 400px; /* Defina a altura máxima para o contêiner da tabela */
+  overflow-y: auto; /* Adicione rolagem vertical */
+}
+
+.table {
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  border: 1px solid #312e2e;
+  text-align: left;
+  color: #333; /* Ajusta a cor do texto para garantir que esteja visível */
+}
+
+.table th {
+  background-color: #292727;
+}
+
+.table td a {
+  color: #242628;
+  text-decoration: none;
+}
+
+.table td a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-250px);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
 }

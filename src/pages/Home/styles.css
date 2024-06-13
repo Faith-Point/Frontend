@@ -49,3 +49,17 @@
     padding: 5px;
   }
 }
+
+/* Adicione estas novas regras */
+body {
+  background-color: #f8f9fa; /* Cor de fundo suave */
+  color: #333; /* Cor do texto */
+}
+
+h1 {
+  color: #333; /* Cor do título */
+}
+
+.content-wrapper {
+  padding-top: 70px; /* Adiciona margem superior para evitar sobreposição da navbar */
+}

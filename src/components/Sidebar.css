@@ -1,0 +1,108 @@
+.sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: #343a40;
+    color: white;
+    padding: 15px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin: 10px 0;
+  }
+  
+  .sidebar nav ul li a,
+  .sidebar nav ul li span {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sidebar nav ul li a:hover,
+  .sidebar nav ul li span:hover {
+    background-color: #495057;
+  }
+  
+  .sidebar nav ul li span.has-submenu::after {
+    content: ' ▼';
+    font-size: 0.8em;
+    color: #bbb;
+  }
+  
+  .sidebar nav ul li ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    margin-left: 20px;
+  }
+  
+  .sidebar nav ul li ul.open {
+    max-height: 500px; /* Ajuste este valor conforme necessário */
+  }
+  
+  .sidebar nav ul li a:hover {
+    background-color: #495057;
+  }
+  
+  .sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    color: #343a40;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .language-selector {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .language-selector button {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .language-selector button:hover {
+    background-color: #495057;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-250px);
+    }
+  
+    .sidebar.open {
+      transform: translateX(0);
+    }
+  
+    .sidebar-toggle {
+      display: block;
+    }
+  
+    .content {
+      margin-left: 0;
+    }
+  }
+  

@@ -11,9 +11,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <NavBar />
-      <Container className="mt-4">
-        {children}
-      </Container>
+      <div className="content-wrapper">
+        <Container className="mt-4">
+          {children}
+        </Container>
+      </div>
     </>
   );
 };

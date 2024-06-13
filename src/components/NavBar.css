@@ -1,3 +1,58 @@
 .navbar {
   margin-bottom: 20px;
+  background-color: #fff; /* Cor de fundo branca para a navbar */
+  color: #000; /* Cor do texto preta */
+}
+
+.navbar a {
+  color: #000 !important; /* Cor do texto dos links preta */
+}
+
+.navbar a:hover {
+  color: #555 !important; /* Cor do texto dos links ao passar o mouse */
+}
+
+.navbar .navbar-brand {
+  font-size: 1.5rem; /* Tamanho da fonte do logotipo */
+}
+
+.navbar .navbar-nav .nav-link {
+  font-size: 1.1rem; /* Tamanho da fonte dos links */
+}
+
+.navbar .navbar-nav .nav-link.active {
+  font-weight: bold; /* Define o peso da fonte para negrito */
+}
+
+.navbar .navbar-nav .nav-link.active::after {
+  content: ''; /* Adiciona um conteúdo vazio */
+  display: block; /* Exibe o conteúdo em um bloco */
+  border-bottom: 3px solid #007bff; /* Adiciona uma borda inferior azul */
+  margin: 0 auto; /* Centraliza a borda */
+  width: 50%; /* Define a largura da borda */
+  padding-bottom: 5px; /* Adiciona um preenchimento inferior */
+}
+
+.navbar .navbar-nav .nav-link.active:hover::after {
+  border-bottom: 3px solid #007bff; /* Altera a cor da borda ao passar o mouse */
+}
+
+.navbar .navbar-toggler {
+  color: #007bff; /* Cor do ícone do botão de alternância */
+}
+
+.navbar .navbar-toggler:hover {
+  color: #0056b3; /* Cor do ícone do botão de alternância ao passar o mouse */
+}
+
+.navbar .navbar-toggler:focus {
+  box-shadow: none; /* Remove a sombra ao focar */
+}
+
+.navbar .navbar-collapse {
+  justify-content: flex-end; /* Alinha os itens à direita */
+}
+
+.navbar .navbar-collapse .navbar-nav {
+  align-items: center; /* Alinha os itens verticalmente */
 }
