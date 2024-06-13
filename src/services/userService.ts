@@ -3,7 +3,7 @@ import { IRole } from '../interfaces/IRole';
 import { IAddress } from '../interfaces/IAddress';
 import { ApiResponse } from '../interfaces/ApiResponse';
 
-const API_URL = 'http://localhost:3308'; // Ajuste a URL conforme necessário
+const API_URL = 'http://localhost:3308';
 
 export const getRoles = async (): Promise<ApiResponse<IRole[]>> => {
   const response = await axios.get<ApiResponse<IRole[]>>(`${API_URL}/role`);
@@ -11,7 +11,9 @@ export const getRoles = async (): Promise<ApiResponse<IRole[]>> => {
 };
 
 export const getAddresses = async (): Promise<ApiResponse<IAddress[]>> => {
-  const response = await axios.get<ApiResponse<IAddress[]>>(`${API_URL}/address`);
+  const response = await axios.get<ApiResponse<IAddress[]>>(
+    `${API_URL}/address`
+  );
   return response.data;
 };
 

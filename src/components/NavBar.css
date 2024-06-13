@@ -1,58 +1,58 @@
 .navbar {
   margin-bottom: 20px;
-  background-color: #fff; /* Cor de fundo branca para a navbar */
-  color: #000; /* Cor do texto preta */
+  background-color: #fff;
+  color: #000;
 }
 
 .navbar a {
-  color: #000 !important; /* Cor do texto dos links preta */
+  color: #000 !important;
 }
 
 .navbar a:hover {
-  color: #555 !important; /* Cor do texto dos links ao passar o mouse */
+  color: #555 !important;
 }
 
 .navbar .navbar-brand {
-  font-size: 1.5rem; /* Tamanho da fonte do logotipo */
+  font-size: 1.5rem;
 }
 
 .navbar .navbar-nav .nav-link {
-  font-size: 1.1rem; /* Tamanho da fonte dos links */
+  font-size: 1.1rem;
 }
 
 .navbar .navbar-nav .nav-link.active {
-  font-weight: bold; /* Define o peso da fonte para negrito */
+  font-weight: bold;
 }
 
 .navbar .navbar-nav .nav-link.active::after {
-  content: ''; /* Adiciona um conteúdo vazio */
-  display: block; /* Exibe o conteúdo em um bloco */
-  border-bottom: 3px solid #007bff; /* Adiciona uma borda inferior azul */
-  margin: 0 auto; /* Centraliza a borda */
-  width: 50%; /* Define a largura da borda */
-  padding-bottom: 5px; /* Adiciona um preenchimento inferior */
+  content: '';
+  display: block;
+  border-bottom: 3px solid #007bff;
+  margin: 0 auto;
+  width: 50%;
+  padding-bottom: 5px;
 }
 
 .navbar .navbar-nav .nav-link.active:hover::after {
-  border-bottom: 3px solid #007bff; /* Altera a cor da borda ao passar o mouse */
+  border-bottom: 3px solid #007bff;
 }
 
 .navbar .navbar-toggler {
-  color: #007bff; /* Cor do ícone do botão de alternância */
+  color: #007bff;
 }
 
 .navbar .navbar-toggler:hover {
-  color: #0056b3; /* Cor do ícone do botão de alternância ao passar o mouse */
+  color: #0056b3;
 }
 
 .navbar .navbar-toggler:focus {
-  box-shadow: none; /* Remove a sombra ao focar */
+  box-shadow: none;
 }
 
 .navbar .navbar-collapse {
-  justify-content: flex-end; /* Alinha os itens à direita */
+  justify-content: flex-end;
 }
 
 .navbar .navbar-collapse .navbar-nav {
-  align-items: center; /* Alinha os itens verticalmente */
+  align-items: center;
 }

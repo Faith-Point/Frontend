@@ -4,7 +4,6 @@ import HomePage from './index';
 import AuthContext from '../../contexts/AuthContext'
 import { BrowserRouter as Router } from 'react-router-dom';
 
-// Mock the axios module
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
@@ -56,13 +55,10 @@ describe('HomePage', () => {
       </AuthContext.Provider>
     );
 
-    // Check that the loading message is displayed
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
 
-    // Wait for the data to be fetched and displayed
     await waitFor(() => expect(mockedAxios.get).toHaveBeenCalledTimes(1));
 
-    // Check that the table headers are displayed
     expect(screen.getByText(/ID/i)).toBeInTheDocument();
     expect(screen.getByText(/Nome/i)).toBeInTheDocument();
     expect(screen.getByText(/Descrição/i)).toBeInTheDocument();
@@ -71,7 +67,6 @@ describe('HomePage', () => {
     expect(screen.getByText(/Contato/i)).toBeInTheDocument();
     expect(screen.getByText(/Rede Social/i)).toBeInTheDocument();
 
-    // Check that the data is displayed in the table
     expect(screen.getByText(fakeData[0].id)).toBeInTheDocument();
     expect(screen.getByText(fakeData[0].name)).toBeInTheDocument();
     expect(screen.getByText(fakeData[0].description)).toBeInTheDocument();

@@ -45,7 +45,8 @@
 }
 
 @media (max-width: 768px) {
-  .w-lg-50, .w-md-75 {
+  .w-lg-50,
+  .w-md-75 {
     width: 100% !important;
   }
 }
@@ -68,13 +69,13 @@ h2 {
 }
 
 .btn-primary:hover {
-  background-color: #357ABD;
-  border-color: #357ABD;
+  background-color: #357abd;
+  border-color: #357abd;
 }
 
 .btn-secondary {
-  background-color: #007BFF;
-  border-color: #007BFF;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .btn-secondary:hover {

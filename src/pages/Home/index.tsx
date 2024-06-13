@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      setData(data.filter(item => item.id !== id));
+      setData(data.filter((item) => item.id !== id));
     } catch (error) {
       setError('Erro ao deletar o ponto de fé');
     }
@@ -88,14 +88,31 @@ const HomePage: React.FC = () => {
                       <td>{item.religion.name}</td>
                       <td>{`${item.contact.name}, ${item.contact.phone}, ${item.contact.email}`}</td>
                       <td>
-                        <a href={item.socialMedia.link} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={item.socialMedia.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {item.socialMedia.name}
                         </a>
                       </td>
                       <td>
                         <div className="d-flex justify-content-between">
-                          <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(item.id)}>Editar</Button>
-                          <Button variant="danger" size="sm" onClick={() => handleDelete(item.id)}>Excluir</Button>
+                          <Button
+                            variant="warning"
+                            size="sm"
+                            className="me-2"
+                            onClick={() => handleEdit(item.id)}
+                          >
+                            Editar
+                          </Button>
+                          <Button
+                            variant="danger"
+                            size="sm"
+                            onClick={() => handleDelete(item.id)}
+                          >
+                            Excluir
+                          </Button>
                         </div>
                       </td>
                     </tr>

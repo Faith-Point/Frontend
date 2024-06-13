@@ -35,7 +35,7 @@ const LoginPage: React.FC = () => {
   };
 
   const handleUser = () => {
-    navigate('/user'); 
+    navigate('/user');
   };
 
   return (

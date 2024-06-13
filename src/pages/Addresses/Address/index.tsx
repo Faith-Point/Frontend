@@ -34,7 +34,7 @@ const AddressPage: React.FC = () => {
   const handleDelete = async (id: string) => {
     try {
       await axios.delete(`http://localhost:3308/address/${id}`);
-      setData(data.filter(item => item.id !== id));
+      setData(data.filter((item) => item.id !== id));
     } catch (error) {
       setError(t('addressesPage.error'));
     }
@@ -45,7 +45,9 @@ const AddressPage: React.FC = () => {
       <Sidebar />
       <div className="content">
         <h1>{t('addressesPage.title')}</h1>
-        <Button onClick={() => navigate('/create')}>{t('addressesPage.newAddress')}</Button>
+        <Button onClick={() => navigate('/create')}>
+          {t('addressesPage.newAddress')}
+        </Button>
         {loading ? (
           <Spinner animation="border" />
         ) : error ? (
@@ -77,8 +79,21 @@ const AddressPage: React.FC = () => {
                     <td>{item.city?.state?.country?.name || 'N/A'}</td>
                     <td>
                       <div className="d-flex justify-content-between">
-                        <Button variant="warning" size="sm" className="me-2" onClick={() => handleEdit(item.id)}>{t('addressesPage.edit')}</Button>
-                        <Button variant="danger" size="sm" onClick={() => handleDelete(item.id)}>{t('addressesPage.delete')}</Button>
+                        <Button
+                          variant="warning"
+                          size="sm"
+                          className="me-2"
+                          onClick={() => handleEdit(item.id)}
+                        >
+                          {t('addressesPage.edit')}
+                        </Button>
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          onClick={() => handleDelete(item.id)}
+                        >
+                          {t('addressesPage.delete')}
+                        </Button>
                       </div>
                     </td>
                   </tr>

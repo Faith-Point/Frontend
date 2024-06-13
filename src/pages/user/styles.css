@@ -1,5 +1,5 @@
 .bg-light {
-  background-color: #f8f9fa !important; /* Cores claras */
+  background-color: #f8f9fa !important;
 }
 
 .p-5 {
@@ -7,7 +7,7 @@
 }
 
 .shadow-sm {
-  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
 .mt-5 {
@@ -24,17 +24,16 @@
   }
 }
 
-/* Paleta de cores tranquilas */
 body {
-  background-color: #f0f4f8; /* Cor de fundo */
+  background-color: #f0f4f8;
 }
 
 h2 {
-  color: #4a90e2; /* Cor do título */
+  color: #4a90e2;
 }
 
 .form-label {
-  color: #4a4a4a; /* Cor dos rótulos */
+  color: #4a4a4a;
 }
 
 .btn-primary {
@@ -43,8 +42,8 @@ h2 {
 }
 
 .btn-primary:hover {
-  background-color: #357ABD;
-  border-color: #357ABD;
+  background-color: #357abd;
+  border-color: #357abd;
 }
 
 .alert-danger {
