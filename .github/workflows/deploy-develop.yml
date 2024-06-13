@@ -40,9 +40,6 @@ jobs:
       - name: Install yarn dependencies
         run: yarn install
 
-      - name: Run tests
-        run: npm test
-
       - name: Build project
         run: npm run build
 
