@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Table, Button, Alert, Spinner } from 'react-bootstrap';
+import { Table, Button, Alert, Spinner, Modal, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import Sidebar from '../../../components/Sidebar';
+import { ICountry } from '../../../interfaces/ICountry';
 import './styles.css';
 
 const CountryPage: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<ICountry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [currentCountry, setCurrentCountry] = useState<ICountry | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,8 +30,9 @@ const CountryPage: React.FC = () => {
     fetchData();
   }, [t]);
 
-  const handleEdit = (id: string) => {
-    navigate(`/edit/${id}`);
+  const handleEdit = (country: ICountry) => {
+    setCurrentCountry(country);
+    setShowModal(true);
   };
 
   const handleDelete = async (id: string) => {
@@ -37,6 +41,19 @@ const CountryPage: React.FC = () => {
       setData(data.filter((item) => item.id !== id));
     } catch (error) {
       setError(t('countryPage.error'));
+    }
+  };
+
+  const handleSave = async () => {
+    if (currentCountry && currentCountry.id) {
+      try {
+        await axios.put(`http://localhost:3308/country/${currentCountry.id}`, currentCountry);
+        setData(data.map((item) => (item.id === currentCountry.id ? currentCountry : item)));
+        setShowModal(false);
+        setCurrentCountry(null);
+      } catch (error) {
+        setError(t('countryPage.error'));
+      }
     }
   };
 
@@ -74,14 +91,14 @@ const CountryPage: React.FC = () => {
                         <Button
                           variant="warning"
                           size="sm"
-                          onClick={() => handleEdit(item.id)}
+                          onClick={() => handleEdit(item)}
                         >
                           {t('countryPage.edit')}
                         </Button>
                         <Button
                           variant="danger"
                           size="sm"
-                          onClick={() => handleDelete(item.id)}
+                          onClick={() => item.id && handleDelete(item.id)}
                         >
                           {t('countryPage.delete')}
                         </Button>
@@ -94,6 +111,54 @@ const CountryPage: React.FC = () => {
           </div>
         )}
       </div>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{t('countryPage.editCountry')}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formShortName">
+              <Form.Label>{t('countryPage.shortName')}</Form.Label>
+              <Form.Control
+                type="text"
+                value={currentCountry?.short_name || ''}
+                onChange={(e) =>
+                  setCurrentCountry({ ...currentCountry, short_name: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formLongName">
+              <Form.Label>{t('countryPage.longName')}</Form.Label>
+              <Form.Control
+                type="text"
+                value={currentCountry?.long_name || ''}
+                onChange={(e) =>
+                  setCurrentCountry({ ...currentCountry, long_name: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formCode">
+              <Form.Label>{t('countryPage.code')}</Form.Label>
+              <Form.Control
+                type="text"
+                value={currentCountry?.code || ''}
+                onChange={(e) =>
+                  setCurrentCountry({ ...currentCountry, code: e.target.value })
+                }
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            {t('countryPage.cancel')}
+          </Button>
+          <Button variant="primary" onClick={handleSave}>
+            {t('countryPage.save')}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

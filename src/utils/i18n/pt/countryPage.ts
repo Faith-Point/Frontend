@@ -7,8 +7,11 @@ const countryPage = {
   actions: 'Ações',
   edit: 'Editar',
   delete: 'Excluir',
-  loading: 'Carregando...',
-  error: 'Erro ao buscar os dados'
+  error: 'Erro ao buscar os dados',
+  editCountry: 'Editar País',
+  cancel: 'Cancelar',
+  save: 'Salvar',
+  loading: 'Carregando...'
 };
 
 export default countryPage;

@@ -7,8 +7,11 @@ const countryPage = {
   actions: 'Actions',
   edit: 'Edit',
   delete: 'Delete',
-  loading: 'Loading...',
-  error: 'Error fetching data'
+  error: 'Error fetching data',
+  editCountry: 'Edit Country',
+  cancel: 'Cancel',
+  save: 'Save',
+  loading: 'Loading...'
 };
 
 export default countryPage;
