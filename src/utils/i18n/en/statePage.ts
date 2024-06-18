@@ -9,7 +9,10 @@ const statePage = {
   edit: 'Edit',
   delete: 'Delete',
   loading: 'Loading...',
-  error: 'Error fetching data'
+  error: 'Error fetching data',
+  editState: 'Edit State',
+  cancel: 'Cancel',
+  save: 'Save',
 };
 
 export default statePage;

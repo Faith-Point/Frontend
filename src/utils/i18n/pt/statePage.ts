@@ -9,7 +9,10 @@ const statePage = {
   edit: 'Editar',
   delete: 'Excluir',
   loading: 'Carregando...',
-  error: 'Erro ao buscar os dados'
+  error: 'Erro ao buscar os dados',
+  editState: 'Editar Estado',
+  cancel: 'Cancelar',
+  save: 'Salvar',
 };
 
 export default statePage;

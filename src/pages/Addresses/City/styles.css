@@ -72,3 +72,16 @@
 .table-buttons button:last-child {
   margin-right: 0;
 }
+.small-button {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  margin-top: 10px;
+}
+
+.small-form-group {
+  width: 50%;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
